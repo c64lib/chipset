@@ -5,6 +5,7 @@
  * Requires KickAssembler v4.x
  * (c) 2017-2018 Maciej Malecki
  */
+#import "common/common.asm"
 #importonce
 .filenamespace vic2
 
@@ -114,19 +115,6 @@
  * Misc. constants
  */
 .label TEXT_SCREEN_WIDTH = 40
-
-/*
- * Why Kickassembler does not support bitwise negation on numerical values?
- * 
- * Params:
- * value: byte to be negated
- */
-.function neg(value) {
-	.return value ^ $FF
-}
-.assert "neg($00) gives $FF", neg($00), $FF
-.assert "neg($FF) gives $00", neg($FF), $00
-.assert "neg(%10101010) gives %01010101", neg(%10101010), %01010101
 
 /*
  * Calculates memory offset of text cell specified by given coordinates.
@@ -243,12 +231,12 @@
  */
 .macro setVideoMode(mode) {
 	lda CONTROL_2
-	and #neg(CONTROL_2_MCM)
+	and #common.neg(CONTROL_2_MCM)
 	ora #calculateControl2ForMode(mode)
 	sta CONTROL_2
 
 	lda CONTROL_1
-	and #neg(CONTROL_1_ECM | CONTROL_1_BMM)
+	and #common.neg(CONTROL_1_ECM | CONTROL_1_BMM)
 	ora #calculateControl1ForMode(mode)
 	sta CONTROL_1
 }
@@ -285,15 +273,15 @@
 	.if (rasterLine > 255) {
 		ora #CONTROL_1_RASTER8
 	} else {
-		and #neg(CONTROL_1_RASTER8)
+		and #common.neg(CONTROL_1_RASTER8)
 	}
 	sta CONTROL_1
 }
 .assert "setRaster(0)", { :setRaster(0) }, { 
-	lda #0; sta RASTER; lda CONTROL_1; and #neg(CONTROL_1_RASTER8); sta CONTROL_1 
+	lda #0; sta RASTER; lda CONTROL_1; and #common.neg(CONTROL_1_RASTER8); sta CONTROL_1 
 }
 .assert "setRaster($FF)", { :setRaster($FF) }, { 
-	lda #$FF; sta RASTER; lda CONTROL_1; and #neg(CONTROL_1_RASTER8); sta CONTROL_1 
+	lda #$FF; sta RASTER; lda CONTROL_1; and #common.neg(CONTROL_1_RASTER8); sta CONTROL_1 
 } 
 .assert "setRaster($100)", { :setRaster($100) }, { 
 	lda #00; sta RASTER; lda CONTROL_1; ora #CONTROL_1_RASTER8; sta CONTROL_1 
@@ -327,7 +315,7 @@
 		ora #CONTROL_1_RASTER8
 		jmp next
 	doAnd:
-		and #neg(CONTROL_1_RASTER8)
+		and #common.neg(CONTROL_1_RASTER8)
 	next:
 		sta CONTROL_1
 	} else {
