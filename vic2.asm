@@ -9,6 +9,10 @@
 #importonce
 .filenamespace vic2
 
+.function neg(value) {
+	.return value ^ $FF
+}
+
 /* ------------------------------------
  * VIC-II registers.
  * ------------------------------------ */
@@ -231,12 +235,12 @@
  */
 .macro setVideoMode(mode) {
 	lda CONTROL_2
-	and #common.neg(CONTROL_2_MCM)
+	and #neg(CONTROL_2_MCM)
 	ora #calculateControl2ForMode(mode)
 	sta CONTROL_2
 
 	lda CONTROL_1
-	and #common.neg(CONTROL_1_ECM | CONTROL_1_BMM)
+	and #neg(CONTROL_1_ECM | CONTROL_1_BMM)
 	ora #calculateControl1ForMode(mode)
 	sta CONTROL_1
 }
@@ -273,15 +277,15 @@
 	.if (rasterLine > 255) {
 		ora #CONTROL_1_RASTER8
 	} else {
-		and #common.neg(CONTROL_1_RASTER8)
+		and #neg(CONTROL_1_RASTER8)
 	}
 	sta CONTROL_1
 }
 .assert "setRaster(0)", { :setRaster(0) }, { 
-	lda #0; sta RASTER; lda CONTROL_1; and #common.neg(CONTROL_1_RASTER8); sta CONTROL_1 
+	lda #0; sta RASTER; lda CONTROL_1; and #neg(CONTROL_1_RASTER8); sta CONTROL_1 
 }
 .assert "setRaster($FF)", { :setRaster($FF) }, { 
-	lda #$FF; sta RASTER; lda CONTROL_1; and #common.neg(CONTROL_1_RASTER8); sta CONTROL_1 
+	lda #$FF; sta RASTER; lda CONTROL_1; and #neg(CONTROL_1_RASTER8); sta CONTROL_1 
 } 
 .assert "setRaster($100)", { :setRaster($100) }, { 
 	lda #00; sta RASTER; lda CONTROL_1; ora #CONTROL_1_RASTER8; sta CONTROL_1 
@@ -315,7 +319,7 @@
 		ora #CONTROL_1_RASTER8
 		jmp next
 	doAnd:
-		and #common.neg(CONTROL_1_RASTER8)
+		and #neg(CONTROL_1_RASTER8)
 	next:
 		sta CONTROL_1
 	} else {
