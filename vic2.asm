@@ -141,7 +141,7 @@
  *
  * MOD: A
  */
-.macro configureTextMemory(video, charSet) {
+.macro @configureTextMemory(video, charSet) {
 	lda #[charSet<<1 | video<<4]
 	sta MEMORY_CONTROL
 }
@@ -167,7 +167,7 @@
  *
  * MOD: A
  */
-.macro configureBitmapMemory(video, bitmap) {
+.macro @configureBitmapMemory(video, bitmap) {
 	lda #[bitmap<<3 | video<<4]
 	sta MEMORY_CONTROL
 }
@@ -229,7 +229,7 @@
  *
  * MOD: A
  */
-.macro setVideoMode(mode) {
+.macro @setVideoMode(mode) {
 	lda CONTROL_2
 	and #neg(CONTROL_2_MCM)
 	ora #calculateControl2ForMode(mode)
@@ -266,7 +266,7 @@
  *
  * MOD: A
  */
-.macro setRaster(rasterLine) {
+.macro @setRaster(rasterLine) {
 	lda #<rasterLine
 	sta RASTER
 	lda CONTROL_1

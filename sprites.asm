@@ -46,7 +46,7 @@
  * Sets X position of given sprite (uses sprite MSB register if necessary)
  * MOD: A
  */
-.macro locateSpriteX(x, spriteNo) {
+.macro @locateSpriteX(x, spriteNo) {
 	.if (x > 255) {
 		lda #<x
 		sta spriteXReg(spriteNo)
@@ -74,7 +74,7 @@
  * Sets Y position of given sprite
  * MOD: A
  */
-.macro locateSpriteY(y, spriteNo) {
+.macro @locateSpriteY(y, spriteNo) {
 	lda #y
 	sta spriteYReg(spriteNo)
 }
@@ -87,7 +87,7 @@
  * Sets X,Y position of given sprite
  * MOD A
  */
-.macro locateSprite(x, y, spriteNo) {
+.macro @locateSprite(x, y, spriteNo) {
 	:locateSpriteX(x, spriteNo)
 	:locateSpriteY(y, spriteNo)
 }
