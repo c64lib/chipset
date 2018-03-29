@@ -7,11 +7,7 @@
  */
 #import "common/common.asm"
 #importonce
-.filenamespace vic2
-
-.function neg(value) {
-	.return value ^ $FF
-}
+.filenamespace c64lib
 
 /* ------------------------------------
  * VIC-II registers.
