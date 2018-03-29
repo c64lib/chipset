@@ -1,5 +1,5 @@
 #importonce
-.filenamespace cia
+.filenamespace c64lib
 
 .label CIA1_BASE 				= $DC00 
 .label CIA2_BASE 				= $DD00
