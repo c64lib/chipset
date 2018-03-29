@@ -1,6 +1,6 @@
 #import "vic2.asm"
 #importonce
-.filenamespace vic2
+.filenamespace c64lib
 
 /* 
  * Calculates sprite X position register address
