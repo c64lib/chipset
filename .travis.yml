@@ -4,9 +4,9 @@ before_install:
   - source <(curl -SLs https://raw.githubusercontent.com/c64lib/travis-ci/master/install.sh)
 script:
   - cpm common https://github.com/c64lib/common/archive/0.0.2.tar.gz 
-  - ka cia.asm
-  - ka vic2.asm
-  - ka sprites.asm
+  - ka -libdir cpm_modules cia.asm
+  - ka -libdir cpm_modules vic2.asm
+  - ka -libdir cpm_modules sprites.asm
 notifications:
   email:
     on_success: change
