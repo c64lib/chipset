@@ -293,7 +293,12 @@
 	lda #$FF; sta RASTER; lda CONTROL_1; ora #CONTROL_1_RASTER8; sta CONTROL_1 
 } 
 
-.macro IRQ_ENTER() {
+/*
+ * Call it when entering raster interrupt.
+ *
+ * MOD: A
+ */
+.macro irqEnter() {
 	pha
 	tya
 	pha
@@ -301,7 +306,14 @@
 	pha
 }
 
-.macro IRQ_EXIT(intVector, rasterLine, memory) {
+/*
+ * Call it at the end of raster interrupt.
+ *
+ * intVector - address of next interrupt handling routine
+ * rasterLine - at which raster line should we fire next interrupt
+ * memory - if true, rasterLine is taken from memory address, if false - absolute addressing is used
+ */
+.macro irqExit(intVector, rasterLine, memory) {
 	ldx #>intVector
 	ldy #<intVector
 	stx $FFFF
