@@ -84,19 +84,19 @@
 /* ------------------------------------
  * IRR bits
  * ------------------------------------ */
-.label IRR_IRQ        = %10000000
-.label IRR_ILP        = %00001000
-.label IRR_IMMC       = %00000100
-.label IRR_IMBC       = %00000010
-.label IRR_IRST       = %00000001
+.label IRR_IRQ            = %10000000
+.label IRR_LIGHTPEN       = %00001000
+.label IRR_SPR_SPR        = %00000100
+.label IRR_SPR_BG         = %00000010
+.label IRR_RASTER         = %00000001
 
 /* ------------------------------------
  * IMR bits
  * ------------------------------------ */
-.label IMR_ELP        = %00001000
-.label IMR_EMMC       = %00000100
-.label IMR_EMBC       = %00000010
-.label IMR_ERST       = %00000001
+.label IMR_LIGHTPEN       = %00001000
+.label IMR_SPR_SPR        = %00000100
+.label IMR_SPR_BG         = %00000010
+.label IMR_RASTER         = %00000001
 
 /* ------------------------------------
  * Graphic modes
