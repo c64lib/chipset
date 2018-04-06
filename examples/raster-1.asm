@@ -3,9 +3,9 @@
  */
 
 #import "common/mem.asm"
-#import "chipset/cia.asm"
-#import "chipset/vic2.asm"
-#import "chipset/mos6510.asm"
+#import "../cia.asm"
+#import "../vic2.asm"
+#import "../mos6510.asm"
 
 .label IRQ_1 = 150
 .label IRQ_2 = 200
