@@ -298,7 +298,7 @@
  *
  * MOD: A
  */
-.macro irqEnter() {
+.macro @irqEnter() {
   pha
   tya
   pha
@@ -313,7 +313,7 @@
  * rasterLine - at which raster line should we fire next interrupt
  * memory - if true, rasterLine is taken from memory address, if false - absolute addressing is used
  */
-.macro irqExit(intVector, rasterLine, memory) {
+.macro @irqExit(intVector, rasterLine, memory) {
   ldx #>intVector
   ldy #<intVector
   stx $FFFF
@@ -341,4 +341,9 @@
   tay
   pla
   rti
+}
+
+.macro @debugBorder(color) {
+  lda #color
+  sta BORDER_COL
 }
