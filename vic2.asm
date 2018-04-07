@@ -344,6 +344,20 @@
 }
 
 .macro @debugBorder(color) {
+  #if VISUAL_DEBUG
   lda #color
   sta BORDER_COL
+  #endif
 }
+
+.macro @debugBorderStart() {
+  #if VISUAL_DEBUG
+  inc BORDER_COL
+  #endif
+}
+.macro @debugBorderEnd() {
+  #if VISUAL_DEBUG
+  dec BORDER_COL
+  #endif
+}
+
