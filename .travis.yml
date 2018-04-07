@@ -3,7 +3,7 @@ sudo: false
 before_install:
   - source <(curl -SLs https://raw.githubusercontent.com/c64lib/travis-ci/master/install.sh)
 script:
-  - cpm common https://github.com/c64lib/common/archive/0.0.4.tar.gz 
+  - cpm common https://github.com/c64lib/common/archive/develop.tar.gz 
   - ka -libdir cpm_modules mos6510.asm
   - ka -libdir cpm_modules cia.asm
   - ka -libdir cpm_modules vic2.asm
