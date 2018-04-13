@@ -133,6 +133,20 @@
 .assert "getTextOffset(39,24) gives 999", getTextOffset(39, 24), 999
 
 /* 
+ * Combines video and charset slots for memory control register.
+ *
+ * Params:
+ * video: location of video ram: 0..15
+ * charSet: location of charset definition: 0..7
+ */
+.function @getTextMemory(video, charSet) {
+  .return charSet<<1 | video<<4
+}
+.assert "getTextMemory(0, 0) returns $00",  getTextMemory(0, 0), %00000000
+.assert "getTextMemory(15,7) returns $FE", getTextMemory(15, 7), %11111110
+.assert "getTextMemory(4,2) returns %01000100", getTextMemory(4, 2), %01000100
+
+/* 
  * Configures memory for text mode
  *
  * Params:
@@ -142,7 +156,7 @@
  * MOD: A
  */
 .macro @configureTextMemory(video, charSet) {
-  lda #[charSet<<1 | video<<4]
+  lda #getTextMemory(video, charSet)
   sta MEMORY_CONTROL
 }
 .assert "configureTextMemory(0, 0) sets $00 to MEMORY_CONTROL reg",  { :configureTextMemory(0, 0) }, {
@@ -159,6 +173,20 @@
 }
 
 /*
+ * Combines video and bitmap slots into value of memory control register.
+ *
+ * Params:
+ * video: location of video ram: 0..15
+ * bitmap: location of bitmap definition: 0..1
+ */
+.function getBitmapMemory(video, bitmap) {
+  .return bitmap<<3 | video<<4
+}
+.assert "getBitmapMemory(0, 0) returns $00", getBitmapMemory(0, 0), %00000000
+.assert "getBitmapMemory(15, 1) returns %11111000", getBitmapMemory(15, 1), %11111000
+.assert "getBitmapMemory(4, 1) returns %01001000", getBitmapMemory(4, 1), %01001000
+
+/*
  * Configure memory for bitmap mode
  *
  * Params:
@@ -168,7 +196,7 @@
  * MOD: A
  */
 .macro @configureBitmapMemory(video, bitmap) {
-  lda #[bitmap<<3 | video<<4]
+  lda #getBitmapMemory(video, bitmap)
   sta MEMORY_CONTROL
 }
 .assert "configureBitmapMemory(0, 0) sets $00 to MEMORY_CONTROL reg", { :configureBitmapMemory(0, 0) }, {
