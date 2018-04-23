@@ -8,7 +8,7 @@ script:
   - ka -libdir cpm_modules cia.asm
   - ka -libdir cpm_modules vic2.asm
   - ka -libdir cpm_modules sprites.asm
-  - ka -libdir cpm_modules examples/raster-1.asm
+  - ka -libdir cpm_modules examples/e01-raster-irq.asm
 notifications:
   email:
     on_success: change
