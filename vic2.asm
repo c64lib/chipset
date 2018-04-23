@@ -179,7 +179,7 @@
  * video: location of video ram: 0..15
  * bitmap: location of bitmap definition: 0..1
  */
-.function getBitmapMemory(video, bitmap) {
+.function @getBitmapMemory(video, bitmap) {
   .return bitmap<<3 | video<<4
 }
 .assert "getBitmapMemory(0, 0) returns $00", getBitmapMemory(0, 0), %00000000
