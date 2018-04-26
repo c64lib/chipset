@@ -62,7 +62,6 @@
 .label SPRITE_7_COLOR       = VIC2 + $2E
 
 .label COLOR_RAM            = $D800
-
 .label TOP_SCREEN_RASTER_POS = 50
 
 /* ------------------------------------
