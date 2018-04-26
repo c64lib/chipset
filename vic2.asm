@@ -133,14 +133,14 @@
 .assert "getTextOffset(39,24) gives 999", getTextOffset(39, 24), 999
 
 /* 
- * Combines video and charset slots for memory control register.
+ * Combines screen and charset slots for memory control register.
  *
  * Params:
- * video: location of video ram: 0..15
+ * screenMem: location of screen memory: 0..15
  * charSet: location of charset definition: 0..7
  */
-.function @getTextMemory(video, charSet) {
-  .return charSet<<1 | video<<4
+.function @getTextMemory(screenMem, charSet) {
+  .return charSet<<1 | screenMem<<4
 }
 .assert "getTextMemory(0, 0) returns $00",  getTextMemory(0, 0), %00000000
 .assert "getTextMemory(15,7) returns $FE", getTextMemory(15, 7), %11111110
