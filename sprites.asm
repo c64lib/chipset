@@ -6,7 +6,7 @@
  * Calculates sprite X position register address
  */
 .function spriteXReg(spriteNo) {
-  .return BASE + spriteNo * 2
+  .return VIC2 + spriteNo * 2
 }
 .assert "Reg address for sprite0 X pos", spriteXReg(0), SPRITE_0_X
 .assert "Reg address for sprite7 X pos", spriteXReg(7), SPRITE_7_X

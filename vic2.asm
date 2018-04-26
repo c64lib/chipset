@@ -12,74 +12,73 @@
 /* ------------------------------------
  * VIC-II registers.
  * ------------------------------------ */
-.label BASE         = $D000 
-.label SPRITE_0_X     = $D000 
-.label SPRITE_0_Y     = $D001 
-.label SPRITE_1_X     = $D002 
-.label SPRITE_1_Y     = $D003 
-.label SPRITE_2_X     = $D004 
-.label SPRITE_2_Y     = $D005 
-.label SPRITE_3_X     = $D006 
-.label SPRITE_3_Y     = $D007 
-.label SPRITE_4_X     = $D008
-.label SPRITE_4_Y     = $D009 
-.label SPRITE_5_X     = $D00A 
-.label SPRITE_5_Y     = $D00B 
-.label SPRITE_6_X     = $D00C 
-.label SPRITE_6_Y     = $D00D
-.label SPRITE_7_X     = $D00E 
-.label SPRITE_7_Y     = $D00F 
-.label SPRITE_MSB_X     = $D010
-.label CONTROL_1      = $D011
-.label RASTER         = $D012
-.label LIGHTPEN_X     = $D013
-.label LIGHTPEN_Y     = $D014
-.label SPRITE_ENABLE    = $D015
-.label CONTROL_2      = $D016
-.label SPRITE_EXPAND_Y    = $D017
-.label MEMORY_CONTROL     = $D018
-.label IRR          = $D019
-.label IMR          = $D01A
-.label SPRITE_PRIORITY    = $D01B
-.label SPRITE_COL_MODE    = $D01C
-.label SPRITE_EXPAND_X    = $D01D
-.label SPRITE_2S_COLLISION  = $D01E
-.label SPRITE_2B_COLLISION  = $D01F
-.label BORDER_COL       = $D020
-.label BG_COL_0       = $D021
-.label BG_COL_1       = $D022
-.label BG_COL_2       = $D023
-.label BG_COL_3       = $D024
-.label SPRITE_COL_0     = $D025
-.label SPRITE_COL_1     = $D026
-.label SPRITE_0_COLOR     = $D027
-.label SPRITE_1_COLOR     = $D028
-.label SPRITE_2_COLOR     = $D029
-.label SPRITE_3_COLOR     = $D02A
-.label SPRITE_4_COLOR     = $D02B
-.label SPRITE_5_COLOR     = $D02C
-.label SPRITE_6_COLOR     = $D02D
-.label SPRITE_7_COLOR     = $D02E
+.label VIC2                 = $D000 
+.label SPRITE_0_X           = VIC2 + $00 
+.label SPRITE_0_Y           = VIC2 + $01 
+.label SPRITE_1_X           = VIC2 + $02 
+.label SPRITE_1_Y           = VIC2 + $03 
+.label SPRITE_2_X           = VIC2 + $04 
+.label SPRITE_2_Y           = VIC2 + $05 
+.label SPRITE_3_X           = VIC2 + $06 
+.label SPRITE_3_Y           = VIC2 + $07 
+.label SPRITE_4_X           = VIC2 + $08
+.label SPRITE_4_Y           = VIC2 + $09 
+.label SPRITE_5_X           = VIC2 + $0A 
+.label SPRITE_5_Y           = VIC2 + $0B 
+.label SPRITE_6_X           = VIC2 + $0C 
+.label SPRITE_6_Y           = VIC2 + $0D
+.label SPRITE_7_X           = VIC2 + $0E 
+.label SPRITE_7_Y           = VIC2 + $0F 
+.label SPRITE_MSB_X         = VIC2 + $10
+.label CONTROL_1            = VIC2 + $11
+.label RASTER               = VIC2 + $12
+.label LIGHTPEN_X           = VIC2 + $13
+.label LIGHTPEN_Y           = VIC2 + $14
+.label SPRITE_ENABLE        = VIC2 + $15
+.label CONTROL_2            = VIC2 + $16
+.label SPRITE_EXPAND_Y      = VIC2 + $17
+.label MEMORY_CONTROL       = VIC2 + $18
+.label IRR                  = VIC2 + $19
+.label IMR                  = VIC2 + $1A
+.label SPRITE_PRIORITY      = VIC2 + $1B
+.label SPRITE_COL_MODE      = VIC2 + $1C
+.label SPRITE_EXPAND_X      = VIC2 + $1D
+.label SPRITE_2S_COLLISION  = VIC2 + $1E
+.label SPRITE_2B_COLLISION  = VIC2 + $1F
+.label BORDER_COL           = VIC2 + $20
+.label BG_COL_0             = VIC2 + $21
+.label BG_COL_1             = VIC2 + $22
+.label BG_COL_2             = VIC2 + $23
+.label BG_COL_3             = VIC2 + $24
+.label SPRITE_COL_0         = VIC2 + $25
+.label SPRITE_COL_1         = VIC2 + $26
+.label SPRITE_0_COLOR       = VIC2 + $27
+.label SPRITE_1_COLOR       = VIC2 + $28
+.label SPRITE_2_COLOR       = VIC2 + $29
+.label SPRITE_3_COLOR       = VIC2 + $2A
+.label SPRITE_4_COLOR       = VIC2 + $2B
+.label SPRITE_5_COLOR       = VIC2 + $2C
+.label SPRITE_6_COLOR       = VIC2 + $2D
+.label SPRITE_7_COLOR       = VIC2 + $2E
 
-.label COLOR_RAM      = $D800
-
+.label COLOR_RAM            = $D800
 .label TOP_SCREEN_RASTER_POS = 50
 
 /* ------------------------------------
  * CONTROL_1 bits
  * ------------------------------------ */
 .label CONTROL_1_RASTER8  = %10000000
-.label CONTROL_1_ECM    = %01000000
-.label CONTROL_1_BMM    = %00100000
-.label CONTROL_1_DEN    = %00010000
-.label CONTROL_1_RSEL   = %00001000
+.label CONTROL_1_ECM      = %01000000
+.label CONTROL_1_BMM      = %00100000
+.label CONTROL_1_DEN      = %00010000
+.label CONTROL_1_RSEL     = %00001000
 
 /* ------------------------------------
  * CONTROL_2 bits
  * ------------------------------------ */
-.label CONTROL_2_RES    = %00100000
-.label CONTROL_2_MCM    = %00010000
-.label CONTROL_2_CSEL   = %00001000
+.label CONTROL_2_RES      = %00100000
+.label CONTROL_2_MCM      = %00010000
+.label CONTROL_2_CSEL     = %00001000
 
 /* ------------------------------------
  * IRR bits
@@ -101,15 +100,15 @@
 /* ------------------------------------
  * Graphic modes
  * ------------------------------------ */
-.label STANDARD_TEXT_MODE   = %000 
+.label STANDARD_TEXT_MODE     = %000 
 .label MULTICOLOR_TEXT_MODE   = %001 
 .label STANDARD_BITMAP_MODE   = %010 
-.label MULTICOLOR_BITMAP_MODE   = %011
-.label EXTENDED_TEXT_MODE   = %100 
+.label MULTICOLOR_BITMAP_MODE = %011
+.label EXTENDED_TEXT_MODE     = %100 
  
-.label MODE_ECM         = %100 
-.label MODE_BMM         = %010 
-.label MODE_MCM         = %001 
+.label MODE_ECM               = %100 
+.label MODE_BMM               = %010 
+.label MODE_MCM               = %001 
 
 /* ------------------------------------
  * Misc. constants
@@ -133,6 +132,20 @@
 .assert "getTextOffset(39,24) gives 999", getTextOffset(39, 24), 999
 
 /* 
+ * Combines screen and charset slots for memory control register.
+ *
+ * Params:
+ * screenMem: location of screen memory: 0..15
+ * charSet: location of charset definition: 0..7
+ */
+.function @getTextMemory(screenMem, charSet) {
+  .return charSet<<1 | screenMem<<4
+}
+.assert "getTextMemory(0, 0) returns $00",  getTextMemory(0, 0), %00000000
+.assert "getTextMemory(15,7) returns $FE", getTextMemory(15, 7), %11111110
+.assert "getTextMemory(4,2) returns %01000100", getTextMemory(4, 2), %01000100
+
+/* 
  * Configures memory for text mode
  *
  * Params:
@@ -142,7 +155,7 @@
  * MOD: A
  */
 .macro @configureTextMemory(video, charSet) {
-  lda #[charSet<<1 | video<<4]
+  lda #getTextMemory(video, charSet)
   sta MEMORY_CONTROL
 }
 .assert "configureTextMemory(0, 0) sets $00 to MEMORY_CONTROL reg",  { :configureTextMemory(0, 0) }, {
@@ -159,6 +172,20 @@
 }
 
 /*
+ * Combines video and bitmap slots into value of memory control register.
+ *
+ * Params:
+ * video: location of video ram: 0..15
+ * bitmap: location of bitmap definition: 0..1
+ */
+.function @getBitmapMemory(video, bitmap) {
+  .return bitmap<<3 | video<<4
+}
+.assert "getBitmapMemory(0, 0) returns $00", getBitmapMemory(0, 0), %00000000
+.assert "getBitmapMemory(15, 1) returns %11111000", getBitmapMemory(15, 1), %11111000
+.assert "getBitmapMemory(4, 1) returns %01001000", getBitmapMemory(4, 1), %01001000
+
+/*
  * Configure memory for bitmap mode
  *
  * Params:
@@ -168,7 +195,7 @@
  * MOD: A
  */
 .macro @configureBitmapMemory(video, bitmap) {
-  lda #[bitmap<<3 | video<<4]
+  lda #getBitmapMemory(video, bitmap)
   sta MEMORY_CONTROL
 }
 .assert "configureBitmapMemory(0, 0) sets $00 to MEMORY_CONTROL reg", { :configureBitmapMemory(0, 0) }, {
@@ -298,7 +325,7 @@
  *
  * MOD: A
  */
-.macro irqEnter() {
+.macro @irqEnter() {
   pha
   tya
   pha
@@ -313,7 +340,7 @@
  * rasterLine - at which raster line should we fire next interrupt
  * memory - if true, rasterLine is taken from memory address, if false - absolute addressing is used
  */
-.macro irqExit(intVector, rasterLine, memory) {
+.macro @irqExit(intVector, rasterLine, memory) {
   ldx #>intVector
   ldy #<intVector
   stx $FFFF
@@ -342,3 +369,22 @@
   pla
   rti
 }
+
+.macro @debugBorder(color) {
+  #if VISUAL_DEBUG
+  lda #color
+  sta BORDER_COL
+  #endif
+}
+
+.macro @debugBorderStart() {
+  #if VISUAL_DEBUG
+  inc BORDER_COL
+  #endif
+}
+.macro @debugBorderEnd() {
+  #if VISUAL_DEBUG
+  dec BORDER_COL
+  #endif
+}
+
