@@ -1,3 +1,4 @@
+
 /*
  * Set of variables, functions and macros 
  * for handling VIC-II graphic processor.
@@ -256,16 +257,16 @@
  *
  * MOD: A
  */
-.macro @setVideoMode(mode) {
-  lda CONTROL_2
-  and #neg(CONTROL_2_MCM)
-  ora #calculateControl2ForMode(mode)
-  sta CONTROL_2
+.macro @setVideoMode(mode) {                // 24
+  lda CONTROL_2                             // 4
+  and #neg(CONTROL_2_MCM)                   // 2
+  ora #calculateControl2ForMode(mode)       // 2
+  sta CONTROL_2                             // 4
 
-  lda CONTROL_1
-  and #neg(CONTROL_1_ECM | CONTROL_1_BMM)
-  ora #calculateControl1ForMode(mode)
-  sta CONTROL_1
+  lda CONTROL_1                             // 4
+  and #neg(CONTROL_1_ECM | CONTROL_1_BMM)   // 2
+  ora #calculateControl1ForMode(mode)       // 2
+  sta CONTROL_1                             // 4
 }
 .assert "setVideoMode(STANDARD_TEXT_MODE) sets 0/0/0", { :setVideoMode(STANDARD_TEXT_MODE) }, {
   lda CONTROL_2;and #%11101111;ora #$00;sta CONTROL_2
