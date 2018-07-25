@@ -123,7 +123,7 @@
  * xPos - X coord
  * yPos - Y coord
  */
-.function getTextOffset(xPos, yPos) {
+.function @getTextOffset(xPos, yPos) {
   .return xPos + TEXT_SCREEN_WIDTH * yPos
 }
 .assert "getTextOffset(0,0) gives 0", getTextOffset(0, 0), 0
