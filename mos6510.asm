@@ -35,3 +35,14 @@
   ora #[config & %00000111]
   sta MOS_6510_IO
 }
+
+.macro disableNMI() {
+    lda #<nmi
+    sta c64lib.NMI_LO
+    lda #>nmi
+    sta c64lib.NMI_HI
+    jmp end
+  nmi: 
+    rti
+  end:
+}

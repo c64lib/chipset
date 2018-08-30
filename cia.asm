@@ -75,3 +75,11 @@
   ora #%00000000
   sta $DD00
 }
+
+.macro disableCIAInterrupts() {
+  lda #$7F                     
+  sta CIA1_IRQ_CONTROL
+  sta CIA2_IRQ_CONTROL
+  lda CIA1_IRQ_CONTROL
+  lda CIA2_IRQ_CONTROL
+}
