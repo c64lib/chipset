@@ -2,7 +2,7 @@
  * Copper demo 1.
  */
 
-#import "common/mem.asm"
+#import "common/lib/mem.asm"
 #import "../cia.asm"
 #import "../vic2.asm"
 #import "../mos6510.asm"

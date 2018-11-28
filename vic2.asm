@@ -6,7 +6,7 @@
  * Requires KickAssembler v4.x
  * (c) 2017-2018 Maciej Malecki
  */
-#import "common/common.asm"
+#import "common/lib/common.asm"
 #importonce
 .filenamespace c64lib
 
