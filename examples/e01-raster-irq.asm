@@ -3,9 +3,9 @@
  */
 
 #import "common/lib/mem.asm"
-#import "../cia.asm"
-#import "../vic2.asm"
-#import "../mos6510.asm"
+#import "../lib/cia.asm"
+#import "../lib/vic2.asm"
+#import "../lib/mos6510.asm"
 
 .label IRQ_1 = 150
 .label IRQ_2 = 200
