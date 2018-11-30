@@ -4,11 +4,8 @@ before_install:
   - source <(curl -SLs https://raw.githubusercontent.com/c64lib/travis-ci/master/install.sh)
 script:
   - cpm common https://github.com/c64lib/common/archive/master.tar.gz 
-  - ka -libdir cpm_modules mos6510.asm
-  - ka -libdir cpm_modules cia.asm
-  - ka -libdir cpm_modules vic2.asm
-  - ka -libdir cpm_modules sprites.asm
-  - ka -libdir cpm_modules examples/e01-raster-irq.asm
+  - kall lib
+  - kall examples
 notifications:
   email:
     on_success: change
