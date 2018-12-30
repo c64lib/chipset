@@ -65,6 +65,9 @@
 .label COLOR_RAM            = $D800
 .label TOP_SCREEN_RASTER_POS = 50
 
+.label RASTER_MAX_PAL       = 312
+.label RASTER_MAX_NTSC      = 263
+
 /* ------------------------------------
  * CONTROL_1 bits
  * ------------------------------------ */
