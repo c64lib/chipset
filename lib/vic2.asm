@@ -386,9 +386,41 @@
   inc BORDER_COL
   #endif
 }
+
 .macro @debugBorderEnd() {
   #if VISUAL_DEBUG
   dec BORDER_COL
   #endif
 }
 
+/*
+ * NTSC detection routine written by J0X (https://csdb.dk/scener/?id=1221).
+ * It is so short and will be called only once so that I will code it as simple
+ * macro and not subroutine.
+ *
+ * This macro takes callback addresses for PAL and NTSC events as parameters. Callback
+ * will be ignored (not jumped into) if its value is 0 or less.
+ *
+ * Params:
+ *   onPalCallback   subroutine address, it will be called (JSR) when PAL is detected
+ *   onNtscCallback  subroutine address, it will be called (JSR) when NTSC is detected
+ */
+.macro detectNtsc(onPalCallback, onNtscCallback) {
+  nextLine: 
+    lda RASTER
+    busyWait: 
+      cmp RASTER
+    beq busyWait
+  bmi nextLine
+  cmp #$20
+  bcc ntsc
+    .if (onPalCallback > 0) {
+      jsr onPalCallback
+    }
+  jmp end
+  ntsc:
+    .if (onNtscCallback > 0) {
+      jsr onNtscCallback
+    }
+  end:
+}
