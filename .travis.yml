@@ -3,7 +3,7 @@ sudo: false
 before_install:
   - source <(curl -SLs https://raw.githubusercontent.com/c64lib/travis-ci/master/install.sh)
 script:
-  - cpm common https://github.com/c64lib/common/archive/0.1.0.tar.gz 
+  - cpm common https://github.com/c64lib/common/archive/develop.tar.gz 
   - kall lib
   - kall examples
 notifications:
