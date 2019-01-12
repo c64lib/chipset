@@ -57,7 +57,7 @@
  *
  * MOD: A
  */
-.macro @setVICBank(bank) {
+.macro setVICBank(bank) {
   lda CIA2_DATA_PORT_A
   and #%11111100
   ora #[bank & %00000011]

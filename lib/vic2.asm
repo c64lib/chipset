@@ -126,7 +126,7 @@
  * xPos - X coord
  * yPos - Y coord
  */
-.function @getTextOffset(xPos, yPos) {
+.function getTextOffset(xPos, yPos) {
   .return xPos + TEXT_SCREEN_WIDTH * yPos
 }
 .assert "getTextOffset(0,0) gives 0", getTextOffset(0, 0), 0
@@ -142,7 +142,7 @@
  * screenMem: location of screen memory: 0..15
  * charSet: location of charset definition: 0..7
  */
-.function @getTextMemory(screenMem, charSet) {
+.function getTextMemory(screenMem, charSet) {
   .return charSet<<1 | screenMem<<4
 }
 .assert "getTextMemory(0, 0) returns $00",  getTextMemory(0, 0), %00000000
@@ -158,7 +158,7 @@
  *
  * MOD: A
  */
-.macro @configureTextMemory(video, charSet) {
+.macro configureTextMemory(video, charSet) {
   lda #getTextMemory(video, charSet)
   sta MEMORY_CONTROL
 }
@@ -182,7 +182,7 @@
  * video: location of video ram: 0..15
  * bitmap: location of bitmap definition: 0..1
  */
-.function @getBitmapMemory(video, bitmap) {
+.function getBitmapMemory(video, bitmap) {
   .return bitmap<<3 | video<<4
 }
 .assert "getBitmapMemory(0, 0) returns $00", getBitmapMemory(0, 0), %00000000
@@ -198,7 +198,7 @@
  *
  * MOD: A
  */
-.macro @configureBitmapMemory(video, bitmap) {
+.macro configureBitmapMemory(video, bitmap) {
   lda #getBitmapMemory(video, bitmap)
   sta MEMORY_CONTROL
 }
@@ -260,7 +260,7 @@
  *
  * MOD: A
  */
-.macro @setVideoMode(mode) {                // 24
+.macro setVideoMode(mode) {                // 24
   lda CONTROL_2                             // 4
   and #neg(CONTROL_2_MCM)                   // 2
   ora #calculateControl2ForMode(mode)       // 2
@@ -297,7 +297,7 @@
  *
  * MOD: A
  */
-.macro @setRaster(rasterLine) {
+.macro setRaster(rasterLine) {
   lda #<rasterLine
   sta RASTER
   lda CONTROL_1
@@ -329,7 +329,7 @@
  *
  * MOD: A
  */
-.macro @irqEnter() {
+.macro irqEnter() {
   pha
   tya
   pha
@@ -344,7 +344,7 @@
  * rasterLine - at which raster line should we fire next interrupt
  * memory - if true, rasterLine is taken from memory address, if false - absolute addressing is used
  */
-.macro @irqExit(intVector, rasterLine, memory) {
+.macro irqExit(intVector, rasterLine, memory) {
   ldx #>intVector
   ldy #<intVector
   stx $FFFF
@@ -374,20 +374,20 @@
   rti
 }
 
-.macro @debugBorder(color) {
+.macro debugBorder(color) {
   #if VISUAL_DEBUG
   lda #color
   sta BORDER_COL
   #endif
 }
 
-.macro @debugBorderStart() {
+.macro debugBorderStart() {
   #if VISUAL_DEBUG
   inc BORDER_COL
   #endif
 }
 
-.macro @debugBorderEnd() {
+.macro debugBorderEnd() {
   #if VISUAL_DEBUG
   dec BORDER_COL
   #endif

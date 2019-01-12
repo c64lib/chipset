@@ -29,7 +29,7 @@
 .label RAM_IO_KERNAL            = PLA_CHAREN | PLA_HIRAM
 .label BASIC_IO_KERNAL          = PLA_CHAREN | PLA_LORAM | PLA_HIRAM
 
-.macro @configureMemory(config) {
+.macro configureMemory(config) {
   lda MOS_6510_IO
   and #%11111000
   ora #[config & %00000111]
