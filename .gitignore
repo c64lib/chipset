@@ -1,4 +1,9 @@
-.cbm
 *.prg
 *.sym
 
+# gradle
+.gradle
+build
+
+.idea
+.ra
