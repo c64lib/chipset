@@ -1,7 +1,7 @@
 language: asm
 sudo: false
-script: ./gradlew
-  - cpm common https://github.com/c64lib/common/archive/develop.tar.gz
+script:
+  - ./gradlew
 notifications:
   email:
     on_success: change
