@@ -1,6 +1,7 @@
 *.prg
 *.sym
-
+.asminfo.txt
+.source.txt
 # gradle
 .gradle
 build
