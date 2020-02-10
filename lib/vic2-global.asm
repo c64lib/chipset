@@ -11,3 +11,5 @@
 .macro @c64lib_setRaster(rasterLine) { setRaster(rasterLine) }
 .macro @c64lib_irqEnter() { irqEnter() }
 .macro @c64lib_irqExit(intVector, rasterLine, memory) { irqExit(intVector, rasterLine, memory) }
+.macro @c64lib_ch(data) { ch(data) }
+.macro @c64lib_cm(data) { cm(data) }
