@@ -1,4 +1,4 @@
-  #import "chipset/lib/vic2.asm"
+  #import "../lib/vic2.asm"
   .filenamespace c64lib
   // @ 0
   ch("..####..")//1
