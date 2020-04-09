@@ -1,7 +1,7 @@
 # c64lib/chipset
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Build Status](https://travis-ci.org/c64lib/chipset.svg?branch=master)](https://travis-ci.org/c64lib/chipset) 
-[![Build Status](https://travis-ci.org/c64lib/chipset.svg?branch=develop)](https://travis-ci.org/c64lib/chipset)
+[![CircleCI](https://circleci.com/gh/c64lib/chipset/tree/master.svg?style=svg)](https://circleci.com/gh/c64lib/chipset/tree/master)
+[![CircleCI](https://circleci.com/gh/c64lib/chipset/tree/develop.svg?style=svg)](https://circleci.com/gh/c64lib/chipset/tree/develop)
 [![Gitter](https://badges.gitter.im/c64lib/community.svg)](https://gitter.im/c64lib/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 
 ## Change log
