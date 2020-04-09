@@ -1,8 +1,8 @@
 
 /*
- * Set of variables, functions and macros 
+ * Set of variables, functions and macros
  * for handling VIC-II graphic processor.
- * 
+ *
  * Requires KickAssembler v4.x
  * (c) 2017-2018 Maciej Malecki
  */
@@ -13,23 +13,23 @@
 /* ------------------------------------
  * VIC-II registers.
  * ------------------------------------ */
-.label VIC2                 = $D000 
-.label SPRITE_0_X           = VIC2 + $00 
-.label SPRITE_0_Y           = VIC2 + $01 
-.label SPRITE_1_X           = VIC2 + $02 
-.label SPRITE_1_Y           = VIC2 + $03 
-.label SPRITE_2_X           = VIC2 + $04 
-.label SPRITE_2_Y           = VIC2 + $05 
-.label SPRITE_3_X           = VIC2 + $06 
-.label SPRITE_3_Y           = VIC2 + $07 
+.label VIC2                 = $D000
+.label SPRITE_0_X           = VIC2 + $00
+.label SPRITE_0_Y           = VIC2 + $01
+.label SPRITE_1_X           = VIC2 + $02
+.label SPRITE_1_Y           = VIC2 + $03
+.label SPRITE_2_X           = VIC2 + $04
+.label SPRITE_2_Y           = VIC2 + $05
+.label SPRITE_3_X           = VIC2 + $06
+.label SPRITE_3_Y           = VIC2 + $07
 .label SPRITE_4_X           = VIC2 + $08
-.label SPRITE_4_Y           = VIC2 + $09 
-.label SPRITE_5_X           = VIC2 + $0A 
-.label SPRITE_5_Y           = VIC2 + $0B 
-.label SPRITE_6_X           = VIC2 + $0C 
+.label SPRITE_4_Y           = VIC2 + $09
+.label SPRITE_5_X           = VIC2 + $0A
+.label SPRITE_5_Y           = VIC2 + $0B
+.label SPRITE_6_X           = VIC2 + $0C
 .label SPRITE_6_Y           = VIC2 + $0D
-.label SPRITE_7_X           = VIC2 + $0E 
-.label SPRITE_7_Y           = VIC2 + $0F 
+.label SPRITE_7_X           = VIC2 + $0E
+.label SPRITE_7_Y           = VIC2 + $0F
 .label SPRITE_MSB_X         = VIC2 + $10
 .label CONTROL_1            = VIC2 + $11
 .label RASTER               = VIC2 + $12
@@ -104,15 +104,15 @@
 /* ------------------------------------
  * Graphic modes
  * ------------------------------------ */
-.label STANDARD_TEXT_MODE     = %000 
-.label MULTICOLOR_TEXT_MODE   = %001 
-.label STANDARD_BITMAP_MODE   = %010 
+.label STANDARD_TEXT_MODE     = %000
+.label MULTICOLOR_TEXT_MODE   = %001
+.label STANDARD_BITMAP_MODE   = %010
 .label MULTICOLOR_BITMAP_MODE = %011
-.label EXTENDED_TEXT_MODE     = %100 
- 
-.label MODE_ECM               = %100 
-.label MODE_BMM               = %010 
-.label MODE_MCM               = %001 
+.label EXTENDED_TEXT_MODE     = %100
+
+.label MODE_ECM               = %100
+.label MODE_BMM               = %010
+.label MODE_MCM               = %001
 
 /* ------------------------------------
  * Misc. constants
@@ -135,7 +135,7 @@
 .assert "getTextOffset(19,12) gives 499", getTextOffset(19, 12), 499
 .assert "getTextOffset(39,24) gives 999", getTextOffset(39, 24), 999
 
-/* 
+/*
  * Combines screen and charset slots for memory control register.
  *
  * Params:
@@ -149,7 +149,7 @@
 .assert "getTextMemory(15,7) returns $FE", getTextMemory(15, 7), %11111110
 .assert "getTextMemory(4,2) returns %01000100", getTextMemory(4, 2), %01000100
 
-/* 
+/*
  * Configures memory for text mode
  *
  * Params:
@@ -217,7 +217,7 @@
 
 /*
  * Calculates set bits for control 1 reg and specified gfx mode
- * 
+ *
  * Params:
  * mode mode designator according to predefined labels
  */
@@ -235,7 +235,7 @@
 
 /*
  * Calculates set bits for control 2 reg and specified gfx mode
- * 
+ *
  * Params:
  * mode mode designator according to predefined labels
  */
@@ -308,21 +308,21 @@
   }
   sta CONTROL_1
 }
-.assert "setRaster(0)", { :setRaster(0) }, { 
-  lda #0; sta RASTER; lda CONTROL_1; and #neg(CONTROL_1_RASTER8); sta CONTROL_1 
+.assert "setRaster(0)", { :setRaster(0) }, {
+  lda #0; sta RASTER; lda CONTROL_1; and #neg(CONTROL_1_RASTER8); sta CONTROL_1
 }
-.assert "setRaster($FF)", { :setRaster($FF) }, { 
-  lda #$FF; sta RASTER; lda CONTROL_1; and #neg(CONTROL_1_RASTER8); sta CONTROL_1 
-} 
-.assert "setRaster($100)", { :setRaster($100) }, { 
-  lda #00; sta RASTER; lda CONTROL_1; ora #CONTROL_1_RASTER8; sta CONTROL_1 
-} 
-.assert "setRaster($1F7)", { :setRaster($1F7) }, { 
-  lda #$F7; sta RASTER; lda CONTROL_1; ora #CONTROL_1_RASTER8; sta CONTROL_1 
-} 
-.assert "setRaster($1FF)", { :setRaster($1FF) }, { 
-  lda #$FF; sta RASTER; lda CONTROL_1; ora #CONTROL_1_RASTER8; sta CONTROL_1 
-} 
+.assert "setRaster($FF)", { :setRaster($FF) }, {
+  lda #$FF; sta RASTER; lda CONTROL_1; and #neg(CONTROL_1_RASTER8); sta CONTROL_1
+}
+.assert "setRaster($100)", { :setRaster($100) }, {
+  lda #00; sta RASTER; lda CONTROL_1; ora #CONTROL_1_RASTER8; sta CONTROL_1
+}
+.assert "setRaster($1F7)", { :setRaster($1F7) }, {
+  lda #$F7; sta RASTER; lda CONTROL_1; ora #CONTROL_1_RASTER8; sta CONTROL_1
+}
+.assert "setRaster($1FF)", { :setRaster($1FF) }, {
+  lda #$FF; sta RASTER; lda CONTROL_1; ora #CONTROL_1_RASTER8; sta CONTROL_1
+}
 
 /*
  * Call it when entering raster interrupt.
@@ -406,9 +406,9 @@
  *   onNtscCallback  subroutine address, it will be called (JSR) when NTSC is detected
  */
 .macro detectNtsc(onPalCallback, onNtscCallback) {
-  nextLine: 
+  nextLine:
     lda RASTER
-    busyWait: 
+    busyWait:
       cmp RASTER
     beq busyWait
   bmi nextLine
@@ -423,4 +423,55 @@
       jsr onNtscCallback
     }
   end:
+}
+
+/**
+ * Rotates pointed character to the right.
+ * This is a hosted subroutine.
+ * This subroutine should be first installed by calling this macro with appropriate parameter (see below).
+ *
+ * Parameters:
+ * charPointer - should point to zero-page location (2 bytes). Location should contain address of the character to be rotated.
+ *
+ * Mod: A, Y
+ */
+.macro rotateCharRight(charPointer) {
+  ldy #0
+  !:
+    lda (charPointer),y
+    clc
+    lsr
+    bcc next
+      ora #%10000000
+    next:
+    sta (charPointer),y
+    iny
+    cpy #8
+  bne !-
+}
+
+/**
+ * Rotates pointed character to the bottom.
+ * This is a hosted subroutine.
+ * This subroutine should be first installed by calling this macro with appropriate parameter (see below).
+ *
+ * Parameters:
+ * charPointer - should point to zero-page location (2 bytes). Location should contain address of the character to be rotated.
+ * store - should point to zero or non-zero location (1 byte). This location is used internaly, it's content will be destroyed after calling the subroutine.
+ *
+ * Mod: A, Y
+ */
+.macro rotateCharBottom(charPointer, store) {
+  ldy #7
+  lda (charPointer),y
+  sta store
+  !:
+    dey
+    lda (charPointer),y
+    iny
+    sta (charPointer),y
+    dey
+  bne !-
+  lda store
+  sta (charPointer),y
 }
