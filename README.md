@@ -8,3 +8,6 @@
 ### Changes in 0.2.0
 
 * Public symbols are now also declared as global in "-global.asm" files
+
+* New macro: `sprites.asm/sh` - define single line of hires sprite.
+* New macro: `sprites.asm/sm` - define single line of multicolor sprite.
