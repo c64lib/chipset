@@ -46,7 +46,7 @@
  * Sets X position of given sprite (uses sprite MSB register if necessary)
  * MOD: A
  */
-.macro @locateSpriteX(x, spriteNo) {
+.macro locateSpriteX(x, spriteNo) {
   .if (x > 255) {
     lda #<x
     sta spriteXReg(spriteNo)
@@ -58,11 +58,11 @@
     sta spriteXReg(spriteNo)
   }
 }
-.assert "locateSpriteX stores X in SPRITE_X reg", { :locateSpriteX(5, 3) }, { 
+.assert "locateSpriteX stores X in SPRITE_X reg", { locateSpriteX(5, 3) }, { 
   lda #$05
   sta SPRITE_3_X 
 }
-.assert "locateSpriteX stores X in SPRITE_X and MSB regs", { :locateSpriteX(257, 3) },  {
+.assert "locateSpriteX stores X in SPRITE_X and MSB regs", { locateSpriteX(257, 3) },  {
   lda #$01
   sta SPRITE_3_X
   lda SPRITE_MSB_X
@@ -74,11 +74,11 @@
  * Sets Y position of given sprite
  * MOD: A
  */
-.macro @locateSpriteY(y, spriteNo) {
+.macro locateSpriteY(y, spriteNo) {
   lda #y
   sta spriteYReg(spriteNo)
 }
-.assert "locateSpriteY stores Y in SPRITE_Y reg", { :locateSpriteY(5, 3) },  {
+.assert "locateSpriteY stores Y in SPRITE_Y reg", { locateSpriteY(5, 3) },  {
   lda #$05
   sta SPRITE_3_Y
 }
@@ -87,7 +87,17 @@
  * Sets X,Y position of given sprite
  * MOD A
  */
-.macro @locateSprite(x, y, spriteNo) {
-  :locateSpriteX(x, spriteNo)
-  :locateSpriteY(y, spriteNo)
+.macro locateSprite(x, y, spriteNo) {
+  locateSpriteX(x, spriteNo)
+  locateSpriteY(y, spriteNo)
+}
+
+.macro sh(data) {
+  .assert "Hires sprite line length must be 24", data.size(), 24
+  .byte convertHires(data.substring(0, 8)), convertHires(data.substring(8, 16)), convertHires(data.substring(16,24))
+}
+
+.macro sm(data) {
+  .assert "Multicolor sprite line length must be 12", data.size(), 12
+  .byte convertMultic(data.substring(0, 4)), convertMultic(data.substring(4, 8)), convertMultic(data.substring(8,12))
 }
