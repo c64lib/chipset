@@ -22,9 +22,8 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-#import "sprites.asm"
+#import "cia.asm"
 #importonce
 .filenamespace c64lib
 
-.macro @c64lib_sh(data) { sh(data) }
-.macro @c64lib_sm(data) { sm(data) }
+.macro @c64lib_setVICBank(bank) { setVICBank(bank) }
