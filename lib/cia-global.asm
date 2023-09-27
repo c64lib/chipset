@@ -27,3 +27,4 @@
 .filenamespace c64lib
 
 .macro @c64lib_setVICBank(bank) { setVICBank(bank) }
+.macro @c64lib_disableCIAInterrupts() { disableCIAInterrupts() }

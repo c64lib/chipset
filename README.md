@@ -6,6 +6,12 @@
 
 ## Change log
 
+### Changes in 0.5.0
+
+* Expose macro: `c64lib_disableCIAInterrupts`
+
+### Changes in 0.4.0
+
 ### Changes in 0.3.0
 
 * New macro: `vic2.asm/rotateCharRight`.
